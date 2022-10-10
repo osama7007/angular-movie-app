@@ -1,0 +1,13 @@
+<div class="card">
+  <img [src]="movie.poster_path" class="card-img-top" [alt]="movie.title" />
+  <div class="card-body">
+    <h5 class="card-title">{{ movie.title | uppercase }}</h5>
+    <p class="card-text">
+      {{ movie.overview }}
+    </p>
+    <p>{{ movie.release_date | date: "MMMM d, y" }}</p>
+    <button class="btn btn-primary" (click)="handleClickOnMovieButton()">
+      Go somewhere
+    </button>
+  </div>
+</div>

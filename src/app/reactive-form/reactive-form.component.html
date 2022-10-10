@@ -1,0 +1,59 @@
+<form [formGroup]="movieForm" (ngSubmit)="handleSubmitForm()">
+  <div class="mb-3">
+    <label for="movieName" class="form-label">Movie name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="movieName"
+      aria-describedby="nameHelp"
+      formControlName="movieName"
+    />
+    <div
+      *ngIf="
+        formControls['movieName'].touched && !formControls['movieName'].valid
+      "
+    >
+      <div
+        id="nameHelp"
+        *ngIf="
+          formControls['movieName'].errors &&
+          formControls['movieName'].errors['required']
+        "
+        class="form-text text-danger"
+      >
+        This field is required
+      </div>
+      <div
+        id="nameHelp"
+        *ngIf="formControls['movieName'].errors && formControls['movieName'].errors['minlength']"
+        class="form-text text-danger"
+      >
+        Min. length is 10 characters
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="mb-3">
+    <label for="category" class="form-label">Category</label>
+    <input
+      type="text"
+      class="form-control"
+      id="category"
+      formControlName="category"
+    />
+    <div
+      *ngIf="
+        (formControls['category'].touched && !formControls['category'].valid)
+      "
+    >
+      <div *ngIf="formControls['category'].errors && formControls['category'].errors['required']">
+        This field is required
+      </div>
+      <div *ngIf="formControls['category'].errors && formControls['category'].errors['maxlength']">
+        Max length is 10
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
